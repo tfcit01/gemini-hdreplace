@@ -171,9 +171,14 @@
     </style>
     <script>
         function printPage() {
-            // 確保視窗取得焦點，解決部分瀏覽器內嵌環境下 window.print() 無反應的問題
-            window.focus(); 
-            window.print();
+            try {
+                // 確保視窗取得焦點，解決部分瀏覽器內嵌環境下 window.print() 無反應的問題
+                window.focus(); 
+                window.print();
+            } catch (e) {
+                console.error("列印功能發生錯誤，可能被瀏覽器或系統環境限制。請嘗試使用 Ctrl+P 快捷鍵。", e);
+                // 這裡可以添加一個簡單的 UI 提示，但我們在此處主要依賴瀏覽器內建功能。
+            }
         }
     </script>
 </head>
